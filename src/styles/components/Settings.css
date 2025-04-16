@@ -1,0 +1,449 @@
+/* src/styles/components/Settings.css */
+
+/* ==================== */
+/* Color Variables and Theming */
+/* ==================== */
+:root {
+  /* Primary Colors */
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  
+  /* Secondary Colors */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for success states */
+  --danger-color: #f44336;       /* Red for error states */
+  --warning-color: #ff9800;      /* Orange for warnings */
+  --info-color: #2196f3;         /* Blue for information */
+  
+  /* Neutral Colors */
+  --background-light: #f8f9fa;   /* Light background */
+  --background-white: #ffffff;   /* White background */
+  --text-primary: #212529;       /* Primary text color */
+  --text-secondary: #6c757d;     /* Secondary text color */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Medium shadow */
+  
+  /* Spacing */
+  --spacing-xs: 4px;             /* Extra small spacing */
+  --spacing-sm: 8px;             /* Small spacing */
+  --spacing-md: 16px;            /* Medium spacing */
+  --spacing-lg: 24px;            /* Large spacing */
+  --spacing-xl: 32px;            /* Extra large spacing */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;       /* Small border radius */
+  --border-radius-md: 8px;       /* Medium border radius */
+  --border-radius-lg: 12px;      /* Large border radius */
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==================== */
+/* Settings Container */
+/* ==================== */
+.settings-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* ==================== */
+/* Settings Header */
+/* ==================== */
+.settings-header {
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.settings-header h2 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: var(--spacing-xs);
+}
+
+.settings-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 1.5px;
+}
+
+.success-message {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left: 4px solid var(--success-color);
+  color: var(--success-color);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-message {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid var(--danger-color);
+  color: var(--danger-color);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== */
+/* Settings Section */
+/* ==================== */
+.settings-section {
+  margin-bottom: var(--spacing-xl);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+}
+
+.settings-section h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-dark);
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-sm);
+}
+
+/* ==================== */
+/* Settings Options */
+/* ==================== */
+.settings-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-md);
+  transition: transform var(--transition-fast);
+}
+
+.setting-item:hover {
+  transform: translateX(4px);
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.setting-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.setting-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: var(--transition-fast);
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: var(--transition-fast);
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--primary-color);
+}
+
+input:focus + .toggle-slider {
+  box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+/* ==================== */
+/* Security Options */
+/* ==================== */
+.security-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.security-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-md);
+}
+
+.security-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.security-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.security-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.security-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.security-button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* ==================== */
+/* Password Form */
+/* ==================== */
+.password-form {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.password-error {
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid var(--danger-color);
+  color: var(--danger-color);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(123, 63, 228, 0.1);
+}
+
+.password-requirements {
+  margin-bottom: var(--spacing-md);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.submit-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.submit-button:disabled {
+  background-color: #b8a2e3;
+  cursor: not-allowed;
+}
+
+/* ==================== */
+/* Settings Actions */
+/* ==================== */
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--spacing-lg);
+}
+
+.save-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.save-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.save-button:active {
+  transform: translateY(0);
+}
+
+.save-button:disabled {
+  background-color: #b8a2e3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==================== */
+/* Responsive Adjustments */
+/* ==================== */
+@media (max-width: 768px) {
+  .setting-item,
+  .security-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .toggle-switch,
+  .security-button {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 576px) {
+  .settings-container {
+    padding: var(--spacing-md);
+  }
+  
+  .settings-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .settings-section {
+    padding: var(--spacing-md);
+  }
+  
+  .password-form {
+    padding: var(--spacing-md);
+  }
+  
+  .form-group input {
+    padding: var(--spacing-sm);
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .submit-button {
+    width: 100%;
+  }
+  
+  .settings-actions {
+    justify-content: center;
+  }
+  
+  .save-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,300 @@
+/* src/styles/components/TournamentTimer.css */
+
+/* ==================== */
+/* Color Variables and Theming */
+/* ==================== */
+:root {
+  /* Primary Colors */
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  
+  /* Secondary Colors */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for active states */
+  --danger-color: #f44336;       /* Red for completed states */
+  --info-color: #2196f3;         /* Blue for upcoming states */
+  
+  /* Neutral Colors */
+  --background-light: #f8f9fa;   /* Light background */
+  --background-white: #ffffff;   /* White background */
+  --text-primary: #212529;       /* Primary text color */
+  --text-secondary: #6c757d;     /* Secondary text color */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Medium shadow */
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15); /* Large shadow */
+  
+  /* Spacing */
+  --spacing-xs: 4px;             /* Extra small spacing */
+  --spacing-sm: 8px;             /* Small spacing */
+  --spacing-md: 16px;            /* Medium spacing */
+  --spacing-lg: 24px;            /* Large spacing */
+  --spacing-xl: 32px;            /* Extra large spacing */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;       /* Small border radius */
+  --border-radius-md: 8px;       /* Medium border radius */
+  --border-radius-lg: 12px;      /* Large border radius */
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ==================== */
+/* Tournament Timer Container */
+/* ==================== */
+.tournament-timer {
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Status-based styling */
+.tournament-timer.upcoming {
+  border-left: 4px solid var(--info-color);
+}
+
+.tournament-timer.active {
+  border-left: 4px solid var(--success-color);
+}
+
+.tournament-timer.completed {
+  border-left: 4px solid var(--danger-color);
+}
+
+/* ==================== */
+/* Timer Message (for upcoming/completed) */
+/* ==================== */
+.timer-message {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.tournament-timer.upcoming .timer-message {
+  color: var(--info-color);
+}
+
+.tournament-timer.active .timer-message {
+  color: var(--success-color);
+}
+
+.tournament-timer.completed .timer-message {
+  color: var(--danger-color);
+}
+
+/* ==================== */
+/* Tournament Dates */
+/* ==================== */
+.tournament-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.date-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.date-value {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+/* ==================== */
+/* Countdown Timer */
+/* ==================== */
+.timer-header {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.timer-value {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-light);
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-value::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.timer-value::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.timer-label {
+  margin-top: var(--spacing-xs);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timer-separator {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: -10px;
+}
+
+/* Pulse animation for last seconds */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.timer-unit:last-child .timer-value {
+  animation: pulse 1s infinite;
+}
+
+/* ==================== */
+/* Background Design Elements */
+/* ==================== */
+.tournament-timer::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(123, 63, 228, 0.05);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.tournament-timer::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 152, 0, 0.05);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.tournament-timer > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== */
+/* Responsive Adjustments */
+/* ==================== */
+@media (max-width: 768px) {
+  .tournament-dates {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 576px) {
+  .countdown-timer {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .timer-unit {
+    min-width: 50px;
+  }
+  
+  .timer-value {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .timer-separator {
+    font-size: 1.25rem;
+    margin: 0 -5px;
+  }
+  
+  .timer-message {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .timer-unit {
+    min-width: 40px;
+  }
+  
+  .timer-value {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .timer-separator {
+    font-size: 1rem;
+  }
+}

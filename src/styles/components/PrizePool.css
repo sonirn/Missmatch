@@ -1,0 +1,196 @@
+/* src/styles/components/PrizePool.css */
+
+:root {
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  --success-color: #4caf50;      /* Green for success states */
+  --warning-color: #ff9800;      /* Orange for warnings */
+  --info-color: #2196f3;         /* Blue for information */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  --background-light: #f8f9fa;   /* Light background */
+}
+
+.prize-pool {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.prize-pool-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.prize-pool-header h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.prize-pool-total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.total-amount {
+  display: inline-block;
+}
+
+.plus {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.prize-table-container {
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.prize-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prize-table th {
+  background-color: var(--background-light);
+  color: var(--primary-dark);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.prize-table tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s;
+}
+
+.prize-table tr:last-child {
+  border-bottom: none;
+}
+
+.prize-table tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.prize-table td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.rank-cell {
+  width: 80px;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.rank-badge.rank-1 {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.rank-badge.rank-2 {
+  background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);
+}
+
+.rank-badge.rank-3 {
+  background: linear-gradient(135deg, #CD7F32, #8B4513);
+  box-shadow: 0 2px 8px rgba(205, 127, 50, 0.4);
+}
+
+.rank-range {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.special-rank {
+  font-weight: 600;
+  color: var(--secondary-color);
+  position: relative;
+  padding-left: 18px;
+}
+
+.special-rank::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  color: var(--secondary-color);
+}
+
+.prize-usdt {
+  font-weight: 600;
+  color: var(--success-color);
+}
+
+.prize-dino {
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.special-prize {
+  background-color: rgba(255, 152, 0, 0.05);
+}
+
+.special-prize:hover {
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.prize-pool-notes {
+  padding: 16px;
+  background-color: var(--background-light);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.prize-pool-notes p {
+  margin: 4px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .prize-pool-header h3 {
+    font-size: 1.25rem;
+  }
+  
+  .prize-pool-total {
+    font-size: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .prize-table th,
+  .prize-table td {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+  }
+  
+  .rank-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,218 @@
+/* src/styles/components/TransactionVerification.css */
+
+/* ==================== */
+/* Color Variables and Theming */
+/* ==================== */
+:root {
+  /* Primary Colors */
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  
+  /* Secondary Colors */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for success states */
+  --danger-color: #f44336;       /* Red for error states */
+  --warning-color: #ff9800;      /* Orange for warnings */
+  --info-color: #2196f3;         /* Blue for information */
+  
+  /* Neutral Colors */
+  --background-light: #f8f9fa;   /* Light background */
+  --background-white: #ffffff;   /* White background */
+  --text-primary: #212529;       /* Primary text color */
+  --text-secondary: #6c757d;     /* Secondary text color */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Medium shadow */
+  
+  /* Spacing */
+  --spacing-xs: 4px;             /* Extra small spacing */
+  --spacing-sm: 8px;             /* Small spacing */
+  --spacing-md: 16px;            /* Medium spacing */
+  --spacing-lg: 24px;            /* Large spacing */
+  --spacing-xl: 32px;            /* Extra large spacing */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;       /* Small border radius */
+  --border-radius-md: 8px;       /* Medium border radius */
+  --border-radius-lg: 12px;      /* Large border radius */
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==================== */
+/* Transaction Verification Container */
+/* ==================== */
+.transaction-verification {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+.verification-title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  text-align: center;
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+.verification-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+/* ==================== */
+/* Verification Form */
+/* ==================== */
+.verification-form {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+  background-color: var(--background-light);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(123, 63, 228, 0.1);
+}
+
+.form-group input:disabled {
+  background-color: var(--background-light);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.error-message {
+  margin-top: var(--spacing-sm);
+  color: var(--danger-color);
+  font-size: 0.875rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(244, 67, 54, 0.1);
+  border-radius: var(--border-radius-sm);
+}
+
+/* ==================== */
+/* Form Actions */
+/* ==================== */
+.form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.verify-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+}
+
+.verify-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(123, 63, 228, 0.3);
+}
+
+.verify-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.verify-button:disabled {
+  background: linear-gradient(135deg, #b8a2e3, #9c87c9);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==================== */
+/* Loading Animation */
+/* ==================== */
+@keyframes spinVerify {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.verify-button:disabled::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spinVerify 1s linear infinite;
+  margin-left: 8px;
+}
+
+/* ==================== */
+/* Responsive Adjustments */
+/* ==================== */
+@media (max-width: 576px) {
+  .transaction-verification {
+    padding: var(--spacing-md);
+  }
+  
+  .verification-title {
+    font-size: 1.125rem;
+  }
+  
+  .form-group input {
+    padding: var(--spacing-sm);
+  }
+  
+  .verify-button {
+    width: 100%;
+    min-width: unset;
+  }
+}

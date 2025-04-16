@@ -1,0 +1,434 @@
+/* src/styles/components/TransactionHistory.css */
+
+/* ==================== */
+/* Color Variables and Theming */
+/* ==================== */
+:root {
+  /* Primary Colors */
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  
+  /* Secondary Colors */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for success states */
+  --danger-color: #f44336;       /* Red for error states */
+  --warning-color: #ff9800;      /* Orange for warnings */
+  --info-color: #2196f3;         /* Blue for information */
+  
+  /* Transaction Colors */
+  --deposit-color: #e91e63;      /* Pink for deposits */
+  --withdrawal-color: #673ab7;   /* Purple for withdrawals */
+  --earning-color: #4caf50;      /* Green for earnings */
+  
+  /* Neutral Colors */
+  --background-light: #f8f9fa;   /* Light background */
+  --background-white: #ffffff;   /* White background */
+  --text-primary: #212529;       /* Primary text color */
+  --text-secondary: #6c757d;     /* Secondary text color */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Medium shadow */
+  
+  /* Spacing */
+  --spacing-xs: 4px;             /* Extra small spacing */
+  --spacing-sm: 8px;             /* Small spacing */
+  --spacing-md: 16px;            /* Medium spacing */
+  --spacing-lg: 24px;            /* Large spacing */
+  --spacing-xl: 32px;            /* Extra large spacing */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;       /* Small border radius */
+  --border-radius-md: 8px;       /* Medium border radius */
+  --border-radius-lg: 12px;      /* Large border radius */
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==================== */
+/* Transaction History Container */
+/* ==================== */
+.transaction-history-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* ==================== */
+/* Transaction History Header */
+/* ==================== */
+.transaction-history-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.transaction-history-header h2 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: var(--spacing-xs);
+}
+
+.transaction-history-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 1.5px;
+}
+
+/* ==================== */
+/* Transaction Filters */
+/* ==================== */
+.transaction-filters {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-md);
+}
+
+.filter-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--background-light);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-button:hover {
+  background-color: var(--primary-light);
+  color: var(--text-light);
+  border-color: var(--primary-light);
+}
+
+.filter-button.active {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-color: var(--primary-color);
+}
+
+.filter-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(123, 63, 228, 0.2);
+}
+
+/* ==================== */
+/* No Transactions */
+/* ==================== */
+.no-transactions {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  border: 1px dashed var(--border-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+.no-transactions p {
+  margin: var(--spacing-sm) 0;
+  color: var(--text-secondary);
+}
+
+.no-transactions p:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ==================== */
+/* Transaction List */
+/* ==================== */
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Use data attributes for transaction type styling */
+.transaction-item[data-type="deposit"] {
+  border-left: 4px solid var(--deposit-color);
+}
+
+.transaction-item[data-type="withdrawal"] {
+  border-left: 4px solid var(--withdrawal-color);
+}
+
+.transaction-item[data-type="earning"] {
+  border-left: 4px solid var(--earning-color);
+}
+
+.transaction-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==================== */
+/* Transaction Icon */
+/* ==================== */
+.transaction-icon {
+  flex-shrink: 0;
+  margin-right: var(--spacing-md);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.icon.deposit {
+  background-color: var(--deposit-color);
+}
+
+.icon.withdrawal {
+  background-color: var(--withdrawal-color);
+}
+
+.icon.earning {
+  background-color: var(--earning-color);
+}
+
+/* ==================== */
+/* Transaction Details */
+/* ==================== */
+.transaction-details {
+  flex: 1;
+}
+
+.transaction-primary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.transaction-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.transaction-amount {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.amount-positive {
+  color: var(--earning-color);
+}
+
+.amount-negative {
+  color: var(--danger-color);
+}
+
+.transaction-secondary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-date {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.transaction-status {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-completed {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--success-color);
+}
+
+.status-pending {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--warning-color);
+}
+
+.status-failed {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--danger-color);
+}
+
+/* ==================== */
+/* Load More Button */
+/* ==================== */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.load-more-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--background-white);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.load-more-button:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+.load-more-button:active {
+  transform: translateY(0);
+}
+
+.load-more-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(123, 63, 228, 0.2);
+}
+
+/* ==================== */
+/* Animations */
+/* ==================== */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animation to newly added transactions */
+.transaction-item:first-child {
+  animation: fadeInLeft 0.5s ease;
+}
+
+/* ==================== */
+/* Responsive Adjustments */
+/* ==================== */
+@media (max-width: 768px) {
+  .transaction-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .transaction-filters {
+    width: 100%;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+  }
+  
+  .filter-button {
+    flex: 1 0 auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .transaction-history-container {
+    padding: var(--spacing-md);
+  }
+  
+  .transaction-history-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .transaction-icon {
+    margin-bottom: var(--spacing-sm);
+    margin-right: 0;
+  }
+  
+  .transaction-details {
+    width: 100%;
+  }
+  
+  .transaction-primary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+  
+  .transaction-secondary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+  }
+  
+  /* Responsive table-like display for mobile */
+  .transaction-item {
+    display: block;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-sm);
+  }
+  
+  .transaction-item[data-type="deposit"],
+  .transaction-item[data-type="withdrawal"],
+  .transaction-item[data-type="earning"] {
+    border-left-width: 4px;
+  }
+  
+  /* Add data-label attributes in your component */
+  .transaction-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    text-align: left;
+    color: var(--text-secondary);
+  }
+  
+  .load-more-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,370 @@
+/* src/styles/components/PaymentStatus.css */
+
+/* ==================== */
+/* Color Variables and Theming */
+/* ==================== */
+:root {
+  /* Primary Colors */
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  
+  /* Secondary Colors */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for success states */
+  --success-light: #e8f5e9;      /* Light green background */
+  --danger-color: #f44336;       /* Red for error states */
+  --danger-light: #ffebee;       /* Light red background */
+  --info-color: #2196f3;         /* Blue for information */
+  --info-light: #e3f2fd;         /* Light blue background */
+  --warning-color: #ff9800;      /* Orange for warnings */
+  
+  /* Neutral Colors */
+  --background-light: #f8f9fa;   /* Light background */
+  --background-white: #ffffff;   /* White background */
+  --text-primary: #212529;       /* Primary text color */
+  --text-secondary: #6c757d;     /* Secondary text color */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Medium shadow */
+  
+  /* Spacing */
+  --spacing-xs: 4px;             /* Extra small spacing */
+  --spacing-sm: 8px;             /* Small spacing */
+  --spacing-md: 16px;            /* Medium spacing */
+  --spacing-lg: 24px;            /* Large spacing */
+  --spacing-xl: 32px;            /* Extra large spacing */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;       /* Small border radius */
+  --border-radius-md: 8px;       /* Medium border radius */
+  --border-radius-lg: 12px;      /* Large border radius */
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==================== */
+/* Payment Status Container */
+/* ==================== */
+.payment-status {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition-normal);
+}
+
+.payment-status:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.payment-status::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+.payment-status.success {
+  background-color: var(--success-light);
+  border: 1px solid var(--success-color);
+}
+
+.payment-status.success::before {
+  background-color: var(--success-color);
+}
+
+.payment-status.error {
+  background-color: var(--danger-light);
+  border: 1px solid var(--danger-color);
+}
+
+.payment-status.error::before {
+  background-color: var(--danger-color);
+}
+
+.payment-status.pending {
+  background-color: var(--info-light);
+  border: 1px solid var(--info-color);
+}
+
+.payment-status.pending::before {
+  background-color: var(--info-color);
+}
+
+/* ==================== */
+/* Status Header */
+/* ==================== */
+.status-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.status-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.status-icon.success {
+  background-color: var(--success-color);
+  color: var(--text-light);
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+}
+
+.status-icon.error {
+  background-color: var(--danger-color);
+  color: var(--text-light);
+  box-shadow: 0 2px 6px rgba(244, 67, 54, 0.3);
+}
+
+.status-icon.pending {
+  background-color: var(--info-color);
+  color: var(--text-light);
+  box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
+  position: relative;
+}
+
+.status-icon.pending::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--text-light);
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.status-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.payment-status.success .status-title {
+  color: var(--success-color);
+}
+
+.payment-status.error .status-title {
+  color: var(--danger-color);
+}
+
+.payment-status.pending .status-title {
+  color: var(--info-color);
+}
+
+/* ==================== */
+/* Status Message */
+/* ==================== */
+.status-message {
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+}
+
+/* ==================== */
+/* Transaction Details */
+/* ==================== */
+.transaction-details {
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+}
+
+.transaction-details h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  font-size: 1rem;
+  color: var(--primary-color);
+  position: relative;
+  padding-bottom: var(--spacing-xs);
+}
+
+.transaction-details h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-light);
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: var(--spacing-sm);
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  color: var(--text-primary);
+  word-break: break-all;
+  flex: 1;
+}
+
+.tx-hash {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.view-link {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.view-link:hover {
+  background-color: var(--primary-dark);
+}
+
+/* ==================== */
+/* Status Actions */
+/* ==================== */
+.status-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+}
+
+.retry-button,
+.close-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.retry-button {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  border: none;
+  box-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+}
+
+.retry-button:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
+}
+
+.close-button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  box-shadow: 0 2px 4px rgba(123, 63, 228, 0.3);
+}
+
+.close-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(123, 63, 228, 0.4);
+}
+
+/* ==================== */
+/* Responsive Adjustments */
+/* ==================== */
+@media (max-width: 576px) {
+  .payment-status {
+    padding: var(--spacing-md);
+  }
+  
+  .status-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .status-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+  
+  .status-actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .retry-button,
+  .close-button {
+    width: 100%;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .detail-label {
+    min-width: auto;
+  }
+  
+  .tx-hash {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .view-link {
+    align-self: flex-end;
+    margin-top: var(--spacing-xs);
+  }
+}

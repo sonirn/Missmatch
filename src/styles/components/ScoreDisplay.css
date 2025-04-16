@@ -1,0 +1,177 @@
+/* src/styles/components/ScoreDisplay.css */
+
+/* Main container for score display */
+.score-display {
+  display: flex;
+    justify-content: space-between;
+      align-items: center;
+        margin-bottom: 1.25rem; /* 20px */
+          padding: 0.9375rem 1.25rem; /* 15px 20px */
+            background-color: #f5f5f5;
+              border-radius: 0.5rem; /* 8px */
+                box-shadow: inset 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1); /* inset 0 1px 3px */
+                }
+
+                /* Containers for current and high scores */
+                .score-current-container,
+                .score-high-container {
+                  display: flex;
+                    flex-direction: column;
+                      align-items: center;
+                      }
+
+                      /* Score labels styling */
+                      .score-label {
+                        font-size: 0.75rem; /* 12px */
+                          font-weight: 600;
+                            color: #757575;
+                              margin-bottom: 0.3125rem; /* 5px */
+                                letter-spacing: 0.0625rem; /* 1px */
+                                  text-transform: uppercase;
+                                  }
+
+                                  /* Score value styling */
+                                  .score-value {
+                                    font-family: 'Courier New', monospace;
+                                      font-size: 2rem; /* 32px */
+                                        font-weight: 700;
+                                          color: #333;
+                                            letter-spacing: 0.125rem; /* 2px */
+                                              position: relative;
+                                              }
+
+                                              /* Score increase animation */
+                                              .score-increase {
+                                                animation: scoreIncrease 0.5s ease-out;
+                                                }
+
+                                                @keyframes scoreIncrease {
+                                                  0% {
+                                                      color: #4CAF50;
+                                                          transform: scale(1);
+                                                            }
+                                                              50% {
+                                                                  color: #4CAF50;
+                                                                      transform: scale(1.1);
+                                                                        }
+                                                                          100% {
+                                                                              color: #333;
+                                                                                  transform: scale(1);
+                                                                                    }
+                                                                                    }
+
+                                                                                    /* Booster effect styling */
+                                                                                    .score-booster-effect {
+                                                                                      position: absolute;
+                                                                                        bottom: -1.25rem; /* 20px */
+                                                                                          right: 0;
+                                                                                            display: flex;
+                                                                                              align-items: center;
+                                                                                                font-size: 0.875rem; /* 14px */
+                                                                                                  color: #FFA000;
+                                                                                                  }
+
+                                                                                                  .score-original {
+                                                                                                    text-decoration: line-through;
+                                                                                                      opacity: 0.7;
+                                                                                                      }
+
+                                                                                                      .score-multiplier {
+                                                                                                        margin-left: 0.3125rem; /* 5px */
+                                                                                                          font-weight: 700;
+                                                                                                          }
+
+                                                                                                          /* Visual enhancement for current score */
+                                                                                                          .score-current-container {
+                                                                                                            position: relative;
+                                                                                                            }
+
+                                                                                                            .score-current-container::after {
+                                                                                                              content: '';
+                                                                                                                position: absolute;
+                                                                                                                  bottom: -0.625rem; /* 10px */
+                                                                                                                    left: 50%;
+                                                                                                                      transform: translateX(-50%);
+                                                                                                                        width: 2.5rem; /* 40px */
+                                                                                                                          height: 0.125rem; /* 2px */
+                                                                                                                            background-color: #4CAF50;
+                                                                                                                              border-radius: 0.125rem; /* 2px */
+                                                                                                                                opacity: 0.6;
+                                                                                                                                }
+
+                                                                                                                                /* Responsive adjustments for different screen sizes */
+                                                                                                                                @media (max-width: 576px) {
+                                                                                                                                  .score-value {
+                                                                                                                                      font-size: 1.75rem; /* 28px */
+                                                                                                                                        }
+                                                                                                                                          
+                                                                                                                                            .score-booster-effect {
+                                                                                                                                                bottom: -1.125rem; /* 18px */
+                                                                                                                                                    font-size: 0.75rem; /* 12px */
+                                                                                                                                                      }
+                                                                                                                                                      }
+
+                                                                                                                                                      @media (max-width: 400px) {
+                                                                                                                                                        .score-display {
+                                                                                                                                                            padding: 0.75rem 0.9375rem; /* 12px 15px */
+                                                                                                                                                              }
+                                                                                                                                                                
+                                                                                                                                                                  .score-value {
+                                                                                                                                                                      font-size: 1.5rem; /* 24px */
+                                                                                                                                                                        }
+                                                                                                                                                                          
+                                                                                                                                                                            .score-label {
+                                                                                                                                                                                font-size: 0.625rem; /* 10px */
+                                                                                                                                                                                  }
+                                                                                                                                                                                  }
+
+                                                                                                                                                                                  /* Dark mode support */
+                                                                                                                                                                                  @media (prefers-color-scheme: dark) {
+                                                                                                                                                                                    .score-display {
+                                                                                                                                                                                        background-color: #2d2d2d;
+                                                                                                                                                                                            box-shadow: inset 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.3);
+                                                                                                                                                                                              }
+                                                                                                                                                                                                
+                                                                                                                                                                                                  .score-label {
+                                                                                                                                                                                                      color: #aaaaaa;
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                          
+                                                                                                                                                                                                            .score-value {
+                                                                                                                                                                                                                color: #f0f0f0;
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                    
+                                                                                                                                                                                                                      .score-current-container::after {
+                                                                                                                                                                                                                          background-color: #66bb6a;
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                @keyframes scoreIncrease {
+                                                                                                                                                                                                                                    0% {
+                                                                                                                                                                                                                                          color: #66bb6a;
+                                                                                                                                                                                                                                                transform: scale(1);
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                        50% {
+                                                                                                                                                                                                                                                              color: #66bb6a;
+                                                                                                                                                                                                                                                                    transform: scale(1.1);
+                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                            100% {
+                                                                                                                                                                                                                                                                                  color: #f0f0f0;
+                                                                                                                                                                                                                                                                                        transform: scale(1);
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                                              /* High contrast mode support for accessibility */
+                                                                                                                                                                                                                                                                                              @media (forced-colors: active) {
+                                                                                                                                                                                                                                                                                                .score-display {
+                                                                                                                                                                                                                                                                                                    border: 0.125rem solid; /* 2px */
+                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                          .score-value {
+                                                                                                                                                                                                                                                                                                              font-weight: bold;
+                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                    .score-current-container::after {
+                                                                                                                                                                                                                                                                                                                        background-color: currentColor;
+                                                                                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                                                                                          

@@ -1,0 +1,431 @@
+/* src/styles/components/ScoreHistory.css */
+
+/* ==================== */
+/* Color Variables and Theming */
+/* ==================== */
+:root {
+  /* Primary Colors */
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  
+  /* Secondary Colors */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for success states */
+  --danger-color: #f44336;       /* Red for error states */
+  --warning-color: #ff9800;      /* Orange for warnings */
+  --info-color: #2196f3;         /* Blue for information */
+  
+  /* Neutral Colors */
+  --background-light: #f8f9fa;   /* Light background */
+  --background-white: #ffffff;   /* White background */
+  --text-primary: #212529;       /* Primary text color */
+  --text-secondary: #6c757d;     /* Secondary text color */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Medium shadow */
+  
+  /* Spacing */
+  --spacing-xs: 4px;             /* Extra small spacing */
+  --spacing-sm: 8px;             /* Small spacing */
+  --spacing-md: 16px;            /* Medium spacing */
+  --spacing-lg: 24px;            /* Large spacing */
+  --spacing-xl: 32px;            /* Extra large spacing */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;       /* Small border radius */
+  --border-radius-md: 8px;       /* Medium border radius */
+  --border-radius-lg: 12px;      /* Large border radius */
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==================== */
+/* Score History Container */
+/* ==================== */
+.score-history-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* ==================== */
+/* Score History Header */
+/* ==================== */
+.score-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.score-history-header h2 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: var(--spacing-xs);
+}
+
+.score-history-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 1.5px;
+}
+
+.score-filters {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.filter-group label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.filter-group select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-white);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+  min-width: 180px;
+  appearance: none; /* Remove default arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 1em;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(123, 63, 228, 0.1);
+}
+
+/* ==================== */
+/* Score Statistics */
+/* ==================== */
+.score-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.stat-box {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  color: var(--text-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal);
+}
+
+.stat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-xs);
+  opacity: 0.9;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+/* ==================== */
+/* Score Table */
+/* ==================== */
+.score-table-container {
+  margin-bottom: var(--spacing-lg);
+  overflow-x: auto;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: var(--background-white);
+}
+
+.score-table th {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  text-align: left;
+  padding: var(--spacing-md);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.score-table th:first-child {
+  border-top-left-radius: var(--border-radius-md);
+}
+
+.score-table th:last-child {
+  border-top-right-radius: var(--border-radius-md);
+}
+
+.score-table tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-fast);
+}
+
+.score-table tr:last-child {
+  border-bottom: none;
+}
+
+.score-table tr:hover {
+  background-color: rgba(123, 63, 228, 0.05);
+}
+
+.score-table td {
+  padding: var(--spacing-md);
+  vertical-align: middle;
+}
+
+.score-value {
+  font-weight: 700;
+  color: var(--primary-dark);
+  font-size: 1.125rem;
+}
+
+.original-score {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-left: var(--spacing-xs);
+}
+
+.tournament-name {
+  color: var(--text-primary);
+}
+
+.score-date {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.booster-status {
+  font-size: 0.875rem;
+}
+
+.booster-applied {
+  color: var(--secondary-color);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.booster-applied::before {
+  content: '★';
+  margin-right: var(--spacing-xs);
+}
+
+.no-booster {
+  color: var(--text-secondary);
+}
+
+/* ==================== */
+/* Empty State */
+/* ==================== */
+.no-scores {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  border: 1px dashed var(--border-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+.no-scores p {
+  margin: var(--spacing-sm) 0;
+  color: var(--text-secondary);
+}
+
+.no-scores p:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ==================== */
+/* Load More Button */
+/* ==================== */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.load-more-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--background-white);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.load-more-button:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+.load-more-button:active {
+  transform: translateY(0);
+}
+
+.load-more-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(123, 63, 228, 0.2);
+}
+
+/* ==================== */
+/* Responsive Adjustments */
+/* ==================== */
+@media (max-width: 768px) {
+  .score-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .score-filters {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .filter-group {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .filter-group select {
+    min-width: 0;
+    width: 100%;
+  }
+  
+  .score-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .score-history-container {
+    padding: var(--spacing-md);
+  }
+  
+  .score-history-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .score-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .score-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .score-table th,
+  .score-table td {
+    padding: var(--spacing-sm);
+    font-size: 0.875rem;
+  }
+  
+  .score-value {
+    font-size: 1rem;
+  }
+  
+  .original-score {
+    display: block;
+    margin-left: 0;
+  }
+  
+  /* Make the table responsive on small screens */
+  .score-table {
+    display: block;
+  }
+  
+  .score-table thead {
+    display: none;
+  }
+  
+  .score-table tbody {
+    display: block;
+  }
+  
+  .score-table tr {
+    display: block;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-sm);
+  }
+  
+  .score-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .score-table td:last-child {
+    border-bottom: none;
+  }
+  
+  /* Add these data attributes in your ScoreHistory.js component when rendering cells */
+  .score-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    text-align: left;
+    color: var(--text-secondary);
+  }
+}

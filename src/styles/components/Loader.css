@@ -1,0 +1,118 @@
+/* src/styles/components/Loader.css */
+/* Loader container */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-container-full {
+  width: 100%;
+  height: 100%;
+}
+
+/* Full-page overlay */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Loader component */
+.loader {
+  display: inline-flex;
+  position: relative;
+}
+
+/* Spinner animation */
+.loader-spinner {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: currentColor transparent currentColor transparent;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Sizes */
+.loader-small .loader-spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.loader-medium .loader-spinner {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+}
+
+.loader-large .loader-spinner {
+  width: 64px;
+  height: 64px;
+  border-width: 4px;
+}
+
+/* Colors */
+.loader-primary .loader-spinner {
+  color: #4CAF50;
+}
+
+.loader-secondary .loader-spinner {
+  color: #FFC107;
+}
+
+.loader-white .loader-spinner {
+  color: #ffffff;
+}
+
+/* Text styles */
+.loader-text {
+  margin-top: 16px;
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+}
+
+/* Full page loader specific styles */
+.loader-full-page {
+  margin: 0 auto;
+}
+
+/* Transparent background */
+.loader-transparent + .loader-text {
+  color: inherit;
+}
+
+/* Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .loader-medium .loader-spinner {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .loader-large .loader-spinner {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .loader-text {
+    font-size: 14px;
+  }
+}

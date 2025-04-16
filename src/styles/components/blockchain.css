@@ -1,0 +1,207 @@
+/* src/styles/components/blockchain.css */
+
+/* Error and Success Messages */
+.error-message {
+  background: rgba(220, 53, 69, 0.2);
+  color: #ff6b81;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff6b81;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.success-message {
+  background: rgba(40, 167, 69, 0.2);
+  color: #7bed9f;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #2ed573;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Blockchain Transaction Status */
+.transaction-status {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 6px;
+  background: #16213e;
+}
+
+.transaction-status .status-icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.transaction-status .status-text {
+  flex: 1;
+}
+
+.transaction-status .status-link {
+  color: #e94560;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.transaction-status .status-link:hover {
+  text-decoration: underline;
+}
+
+/* Status Colors */
+.status-pending {
+  color: #ffc107;
+}
+
+.status-confirmed {
+  color: #2ed573;
+}
+
+.status-failed {
+  color: #ff6b81;
+}
+
+/* Wallet Connection Button */
+.wallet-connect-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  background: #0f3460;
+  color: white;
+  border: 1px solid #e94560;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wallet-connect-button:hover {
+  background: #16213e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(15, 52, 96, 0.5);
+}
+
+.wallet-connect-button .wallet-icon {
+  margin-right: 8px;
+}
+
+.wallet-connect-button.connected {
+  background: #16213e;
+  border-color: #2ed573;
+}
+
+/* Wallet Address Display */
+.wallet-address {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: #0f3460;
+  border-radius: 20px;
+  font-family: monospace;
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+.wallet-address .copy-icon {
+  margin-left: 8px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.wallet-address .copy-icon:hover {
+  color: #e94560;
+}
+
+/* Transaction Form */
+.transaction-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #16213e;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.transaction-form h3 {
+  color: #e94560;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.transaction-form .form-group {
+  margin-bottom: 20px;
+}
+
+.transaction-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+.transaction-form .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #0f3460;
+  color: #fff;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.transaction-form .form-group input:focus {
+  outline: none;
+  border-color: #e94560;
+  box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.2);
+}
+
+.transaction-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.transaction-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.transaction-form .submit-button {
+  background: #e94560;
+  color: white;
+}
+
+.transaction-form .submit-button:hover:not(:disabled) {
+  background: #d63553;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(233, 69, 96, 0.3);
+}
+
+.transaction-form .cancel-button {
+  background: transparent;
+  color: #f0f0f0;
+  border: 1px solid #333;
+}
+
+.transaction-form .cancel-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.transaction-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

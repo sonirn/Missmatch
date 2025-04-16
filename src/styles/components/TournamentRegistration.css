@@ -1,0 +1,496 @@
+/* src/styles/components/TournamentRegistration.css */
+
+/* ==================== */
+/* Color Variables and Theming */
+/* ==================== */
+:root {
+  /* Primary Colors */
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  
+  /* Secondary Colors */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for success states */
+  --danger-color: #f44336;       /* Red for error states */
+  --warning-color: #ff9800;      /* Orange for warnings */
+  --info-color: #2196f3;         /* Blue for information */
+  
+  /* Neutral Colors */
+  --background-light: #f8f9fa;   /* Light background */
+  --background-white: #ffffff;   /* White background */
+  --text-primary: #212529;       /* Primary text color */
+  --text-secondary: #6c757d;     /* Secondary text color */
+  --text-light: #ffffff;         /* Light text color */
+  --border-color: #e9ecef;       /* Border color */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Medium shadow */
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15); /* Large shadow */
+  
+  /* Spacing */
+  --spacing-xs: 4px;             /* Extra small spacing */
+  --spacing-sm: 8px;             /* Small spacing */
+  --spacing-md: 16px;            /* Medium spacing */
+  --spacing-lg: 24px;            /* Large spacing */
+  --spacing-xl: 32px;            /* Extra large spacing */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;       /* Small border radius */
+  --border-radius-md: 8px;       /* Medium border radius */
+  --border-radius-lg: 12px;      /* Large border radius */
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ==================== */
+/* Tournament Registration Container */
+/* ==================== */
+.tournament-registration {
+  margin-top: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* ==================== */
+/* Registration Button */
+/* ==================== */
+.register-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  width: 100%;
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+.register-button:disabled {
+  background: linear-gradient(135deg, #b8a2e3, #9c87c9);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==================== */
+/* Registration Status (When Registered) */
+/* ==================== */
+.tournament-registration.registered {
+  margin-top: var(--spacing-md);
+}
+
+.registration-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--success-color);
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--success-color);
+  color: var(--text-light);
+  border-radius: 50%;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.status-text {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+/* ==================== */
+/* Referral Section */
+/* ==================== */
+.referral-section {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+}
+
+.referral-title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.referral-form {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.referral-input {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.875rem;
+  transition: border-color var(--transition-fast);
+}
+
+.referral-input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+}
+
+.referral-input:disabled {
+  background-color: var(--background-light);
+  cursor: not-allowed;
+}
+
+.referral-button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.referral-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.referral-button:disabled {
+  background-color: #b8a2e3;
+  cursor: not-allowed;
+}
+
+.referral-message {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.875rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.referral-message.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--success-color);
+}
+
+.referral-message.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--danger-color);
+}
+
+/* ==================== */
+/* Modal Content Styles */
+/* ==================== */
+.registration-modal-content {
+  max-width: 600px;
+}
+
+/* Step Indicator */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.step {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.step.active {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.step.completed {
+  background-color: var(--success-color);
+  color: var(--text-light);
+}
+
+.step-divider {
+  flex: 1;
+  height: 2px;
+  background-color: var(--border-color);
+  margin: 0 var(--spacing-sm);
+}
+
+.step-divider.completed {
+  background-color: var(--success-color);
+}
+
+/* Payment Instructions */
+.payment-details {
+  padding: var(--spacing-md);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+}
+
+.payment-details h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-dark);
+  font-size: 1.125rem;
+}
+
+.payment-details p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.5;
+}
+
+.wallet-address {
+  background-color: var(--background-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.address-label {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.address-value {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.address-value code {
+  flex: 1;
+  background-color: var(--background-light);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.copy-button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.copy-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.payment-notes {
+  margin-bottom: var(--spacing-lg);
+}
+
+.note {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(33, 150, 243, 0.1);
+  border-left: 4px solid var(--info-color);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.note.warning {
+  background-color: rgba(255, 152, 0, 0.1);
+  border-left-color: var(--warning-color);
+}
+
+/* Payment Verification */
+.verification-form {
+  padding: var(--spacing-md);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+}
+
+.verification-form h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-dark);
+  font-size: 1.125rem;
+}
+
+.verification-form p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+}
+
+.form-group input:disabled {
+  background-color: var(--background-light);
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: var(--spacing-sm);
+  color: var(--danger-color);
+  font-size: 0.875rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(244, 67, 54, 0.1);
+  border-radius: var(--border-radius-sm);
+}
+
+.success-message {
+  margin-top: var(--spacing-sm);
+  color: var(--success-color);
+  font-size: 0.875rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: var(--border-radius-sm);
+}
+
+.verification-notes {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.cancel-button,
+.back-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--background-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.cancel-button:hover,
+.back-button:hover {
+  background-color: var(--background-light);
+}
+
+.continue-button,
+.verify-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.continue-button:hover,
+.verify-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.verify-button:disabled {
+  background-color: #b8a2e3;
+  cursor: not-allowed;
+}
+
+/* ==================== */
+/* Responsive Adjustments */
+/* ==================== */
+@media (max-width: 576px) {
+  .action-buttons {
+    flex-direction: column-reverse;
+    gap: var(--spacing-sm);
+  }
+  
+  .step {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .wallet-address {
+    padding: var(--spacing-sm);
+  }
+  
+  .address-value {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .copy-button {
+    align-self: flex-end;
+  }
+  
+  .form-group input {
+    padding: var(--spacing-sm);
+  }
+  
+  .referral-form {
+    flex-direction: column;
+  }
+}

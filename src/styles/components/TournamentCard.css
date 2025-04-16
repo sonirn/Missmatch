@@ -1,0 +1,240 @@
+/* src/styles/components/TournamentCard.css */
+
+/* Color variables for consistent theming */
+:root {
+  --primary-color: #7b3fe4;      /* Main brand purple */
+  --primary-light: #9d68f0;      /* Lighter purple for hover states */
+  --primary-dark: #5c2db0;       /* Darker purple for active states */
+  --secondary-color: #ff9800;    /* Orange accent for highlights */
+  --secondary-light: #ffb74d;    /* Lighter orange */
+  --secondary-dark: #f57c00;     /* Darker orange */
+  
+  /* Status Colors */
+  --success-color: #4caf50;      /* Green for active states */
+  --danger-color: #f44336;       /* Red for completed states */
+  --info-color: #2196f3;         /* Blue for upcoming states */
+}
+
+/* Tournament Card Container */
+.tournament-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  border: 1px solid #eaeaea;
+}
+
+.tournament-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Tournament Card Header */
+.tournament-card-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tournament-card-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Tournament Card Body */
+.tournament-card-body {
+  padding: 20px;
+}
+
+.tournament-info {
+  margin-bottom: 20px;
+}
+
+.info-row {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: 600;
+  min-width: 120px;
+  color: #6c757d;
+  flex-shrink: 0;
+}
+
+.info-value {
+  color: #343a40;
+  flex-grow: 1;
+}
+
+.info-value.prize-pool {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+/* Tournament Actions */
+.tournament-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.tournament-actions .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: white;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  color: white;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.status-badge.upcoming {
+  background-color: var(--info-color);
+}
+
+.status-badge.active {
+  background-color: var(--success-color);
+}
+
+.status-badge.completed {
+  background-color: var(--danger-color);
+}
+
+/* Prize Pool Details */
+.prize-pool-details {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Tournament Type Indicators */
+.tournament-card.mini::before,
+.tournament-card.grand::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 50px 50px 0;
+  z-index: 1;
+}
+
+.tournament-card.mini::before {
+  border-color: transparent var(--info-color) transparent transparent;
+}
+
+.tournament-card.grand::before {
+  border-color: transparent var(--secondary-color) transparent transparent;
+}
+
+.tournament-card.mini::after,
+.tournament-card.grand::after {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.875rem;
+  z-index: 2;
+}
+
+.tournament-card.mini::after {
+  content: 'M';
+}
+
+.tournament-card.grand::after {
+  content: 'G';
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+  .tournament-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .info-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .info-label {
+    min-width: auto;
+  }
+  
+  .tournament-actions {
+    flex-direction: column;
+  }
+  
+  .tournament-actions .btn {
+    width: 100%;
+  }
+}

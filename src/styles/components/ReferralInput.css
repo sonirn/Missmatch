@@ -1,0 +1,122 @@
+/* src/styles/components/ReferralInput.css */
+.referral-input-container {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.referral-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.referral-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 20px;
+}
+
+.referral-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.referral-input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.referral-input {
+  flex: 1;
+  height: 44px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.referral-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.referral-input::placeholder {
+  color: #aaa;
+}
+
+.referral-message {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.referral-message.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #F44336;
+}
+
+.referral-message.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+}
+
+.referral-message i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.referral-message p {
+  margin: 0;
+}
+
+.referral-status {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.referral-status.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+}
+
+.referral-status i {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.referral-status-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.referral-status-text p {
+  margin: 0;
+}
+
+.referrer-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  .referral-input-group {
+    flex-direction: column;
+  }
+  
+  .referral-input {
+    width: 100%;
+  }
+}
