@@ -1,0 +1,321 @@
+/* src/components/WalletSettings.css */
+.wallet-settings-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #1a1a2e;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  color: #f0f0f0;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.wallet-settings-container h2 {
+  color: #f0f0f0;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Balance Section Styling */
+.balance-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.balance-card {
+  flex: 1;
+  min-width: 250px;
+  background: #16213e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.balance-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.balance-card h3 {
+  color: #e94560;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.balance-amount {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.balance-note {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+/* Withdrawal Section Styling */
+.withdrawal-section {
+  background: #16213e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.withdrawal-section h3 {
+  color: #e94560;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #0f3460;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #e94560;
+  box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.2);
+}
+
+/* Button Styling */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.primary-button {
+  background: #e94560;
+  color: white;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #d63553;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(233, 69, 96, 0.3);
+}
+
+.secondary-button {
+  background: #0f3460;
+  color: white;
+  border: 1px solid #e94560;
+}
+
+.secondary-button:hover:not(:disabled) {
+  background: #16213e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(15, 52, 96, 0.5);
+}
+
+.withdrawal-note {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 15px;
+}
+
+/* Message Styling */
+.error-message {
+  background: rgba(220, 53, 69, 0.2);
+  color: #ff6b81;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff6b81;
+}
+
+.success-message {
+  background: rgba(40, 167, 69, 0.2);
+  color: #7bed9f;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #2ed573;
+}
+
+/* History Section Styling */
+.history-section {
+  background: #16213e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.history-section h3 {
+  color: #e94560;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.history-table th {
+  background: #0f3460;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #f0f0f0;
+  border-bottom: 1px solid #333;
+}
+
+.history-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  color: #f0f0f0;
+}
+
+.history-table tbody tr:hover {
+  background-color: rgba(15, 52, 96, 0.6);
+}
+
+.history-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.address-cell {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.history-table a {
+  color: #e94560;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.history-table a:hover {
+  color: #ff6b81;
+  text-decoration: underline;
+}
+
+/* Status Styling */
+.status-pending {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.status-completed {
+  color: #1dd1a1;
+  font-weight: 600;
+}
+
+.status-failed {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wallet-settings-container {
+    padding: 15px;
+  }
+
+  .balance-section {
+    flex-direction: column;
+  }
+  
+  .balance-card {
+    min-width: auto;
+  }
+  
+  .balance-amount {
+    font-size: 28px;
+  }
+  
+  .form-group input {
+    padding: 10px 12px;
+  }
+  
+  button {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+
+  .history-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .history-table th,
+  .history-table td {
+    padding: 8px 10px;
+  }
+  
+  .address-cell {
+    max-width: 100px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .wallet-settings-container h2 {
+    font-size: 24px;
+  }
+  
+  .balance-amount {
+    font-size: 24px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+  }
+  
+  .form-group input {
+    font-size: 14px;
+  }
+  
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
